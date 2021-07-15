@@ -19,7 +19,7 @@ class Task:
 	def due(self, week):
 		return first_week_of_mounth(week)
 
-TaskData = namedtuple('TaskData', ['name,', 'count', 'weeks_since_done'])
+# TaskData = namedtuple('TaskData', ['name,', 'count', 'weeks_since_done'])
 
 @dataclass(frozen=True)
 class Person:
@@ -28,17 +28,6 @@ class Person:
 
 	def available(self, week):
 		return True
-
-	def cleaning_score(self, task) -> int:
-		'''
-		Cleaning score - the heart of the algorithms and 
-		the most poorly documented and least readable function in it.
-		'''
-		any_last_week = min(self._weeks_since_done.values()) == 1
-		any_2w_ago = min(self._weeks_since_done.values()) == 2
-		t_counter = self._task_counters[task]
-		any_counter = sum(self._task_counters.values())
-		return Person.steven_score(any_last_week, any_2w_ago, t_counter, any_counter)
 
 	def __hash__(self):
 		return hash(self.room)
@@ -51,18 +40,6 @@ class Person:
 		'''Based on works of S. Meuleman, Esq.'''
 		return 8 * any_last_week + 2 * any_2w_ago + 2 * t_counter + 1 * any_counter
 
-class TaskPersonTable():
-	people: list[Person]
-	tasks: list[Task]
-
-	PeopleList = namedtuple('PeopleList', [person.name for person in people])
-	TaskList = namedtuple('PeopleList', [task.name for task in tasks])
-
-	_rows = TaskList(*[PeopleList(*[0 for person in people])])
-
-	def __iter__(self):
-		pass
-
 tasks = [
 	Task('Living room', numpeople=2),
 	Task('Toilets'),
@@ -73,49 +50,81 @@ tasks = [
 	Task('Laundry room', ismonthly=True)
 ]
 
-people = [ 
-	Person('Eva', 101, )
+people = [
+	Person('Eva', 101),
+	Person('Ab', 102),
+	Person('Roos', 103),
+	Person('Kees', 104),
+	Person('Marko', 105),
+	Person('Manu', 106),
+	Person('Jasper', 107),
+	Person('Stephanie', 211),
+	Person('Daan', 212),
+	Person('Marjo', 213),
+	Person('Bas', 214),
+	Person('Tom', 215),
+	Person('Michelle', 216),
+	Person('Diego', 217)
 ]
 
-def _fill_week(tasks: list[Task]=[], people: list[Person]=[]):
-	'''
-	1. choose candidates for each task
-	2. if a candidate in multiple tasks:
-		1. assign the candidate to the task with lower score
-		2. choose a backup candidate for other tasks
-	'''
-	candidates = {task : task.candidates[:3] for task in tasks}
-	while True:
-		pass
+class Counters:
+	times_done = {(t, p) : 0 for t in tasks for p in people}
+	weeks_since_done = {(t, p) : 1e9 for t in tasks for p in people}
+
+	@classmethod
+	def score(cls, task: Task, person: Person) -> float:
+		td = cls.times_done[task, person]
+		wsd = cls.weeks_since_done[task, person]
+		return td + 10 / wsd
+	
+	@classmethod
+	def update(cls, assignments: list[tuple[Task, Person]]):
+		"""
+		Inrements total task counters and resets weeks since done for assigned people, updates WSD for the rest
+		"""
+		for task_person in cls.weeks_since_done:
+			cls.weeks_since_done[task_person] += 1
+
+		for task, people in assignments:
+			for person in people:
+				cls.times_done[task, person] += task.weight
+				cls.weeks_since_done[task, person] = 1
+
+def score(task, person):
+	return Counters.score(task, person)
 
 def choose_people(task: Task, people: set[Person]) -> set[Person]:
-	chosen = sorted(task.scores)[:task.numpeople]
-	return set(person for score, person in chosen)
-
+	scores = [(score(task, person), person) for person in people]
+	scores.sort(key=lambda pair: pair[0])
+	chosen = scores[:task.numpeople]
+	return set([person for score, person in chosen])
 
 def fill_week(tasks: set[Task], people: set[Person]):
 	assignments = {}
 	for task in tasks:
-		assignments[task] = choose_people(task, people)
-		people -= assignments[task]
+		c = choose_people(task, people)
+		assignments[task] = c
+		people = people - c
+	Counters.update(assignments.items())
+	return assignments
 
-def _fill_week(tasks: list[Task]=[], people: list[Person]=[]):
-	candidates = defaultdict([])
-	for person in people:
-		(chosen_task, score) = person.chosen_task
-		candidates[chosen_task].append(chosen_task, score)
+# def _fill_week(tasks: list[Task]=[], people: list[Person]=[]):
+# 	candidates = defaultdict([])
+# 	for person in people:
+# 		(chosen_task, score) = person.chosen_task
+# 		candidates[chosen_task].append(chosen_task, score)
 	
-	assigned_people = {}
-	for task in candidates:
-		min_score = min(score for _, score in candidates[task])
-		chosen_person = choice(person for person, score in candidates[task] if score == min_score)
-		assigned_people[task] = chosen_person
-		person.do(task)
+# 	assigned_people = {}
+# 	for task in candidates:
+# 		min_score = min(score for _, score in candidates[task])
+# 		chosen_person = choice(person for person, score in candidates[task] if score == min_score)
+# 		assigned_people[task] = chosen_person
+# 		person.do(task)
 	
-	for person in people:
-		person.pass_week()
+# 	for person in people:
+# 		person.pass_week()
 	
-	return assigned_people
+# 	return assigned_people
 	
 def weeks(start: date, end: date) -> list[date]:
 	'''
@@ -131,8 +140,8 @@ def first_week_of_mounth(week: date) -> bool:
 	return week.day - week.weekday() <= 7
 
 def fill_schedule(weeks):
-	get_people = lambda week: (person.available(week) for person in people)
-	get_tasks = lambda week: (task.due(week) for task in tasks)
+	get_people = lambda week: {person for person in people if person.available(week)}
+	get_tasks = lambda week: (task for task in tasks if task.due(week))
 	return ((week, fill_week(get_tasks(week), get_people(week))) for week in weeks)
 
 def build_table(schedule, header=True):
