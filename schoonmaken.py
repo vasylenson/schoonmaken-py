@@ -17,7 +17,7 @@ class Task:
 		return self.name
 
 	def due(self, week):
-		return first_week_of_mounth(week)
+		return first_week_of_mounth(week) or not self.ismonthly
 
 # TaskData = namedtuple('TaskData', ['name,', 'count', 'weeks_since_done'])
 
@@ -100,7 +100,7 @@ def choose_people(task: Task, people: set[Person]) -> set[Person]:
 	return set([person for score, person in chosen])
 
 def fill_week(tasks: set[Task], people: set[Person]):
-	assignments = {}
+	assignments = {} # Map: Task -> [Person]
 	for task in tasks:
 		c = choose_people(task, people)
 		assignments[task] = c
@@ -144,8 +144,16 @@ def fill_schedule(weeks):
 	get_tasks = lambda week: (task for task in tasks if task.due(week))
 	return ((week, fill_week(get_tasks(week), get_people(week))) for week in weeks)
 
+def names(assignments: dict[Task, Person]):
+	def person_or_none(task: Task):
+		if task in assignments:
+			return [person.name for person in assignments[task]]
+		else:
+			return None
+	return [person_or_none(task) for task in tasks]
+
 def build_table(schedule, header=True):
-	table = [['Week'] + [task.name for task in task]] if header else []
-	task_row = lambda week_tasks: [week_tasks[task] or None for task in tasks]
-	table += [[week.strftime('%d-%m-%y')] + task_row(tasks) for week, week_tasks in schedule]
+	# print(len(list(schedule)), "########################")
+	table = [['Week'] + [task.name for task in tasks]] if header else []
+	table += [[week.strftime('%d-%m-%y')] + names(tasks) for week, tasks in schedule]
 	return table
