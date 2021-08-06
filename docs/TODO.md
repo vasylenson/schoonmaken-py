@@ -5,10 +5,6 @@
 - config file/script
 - serialization
 
-## Experimental Features
-- dynamic regeneration
-- UI for marking availability
-
 ## Internals
 - **split the code**
 - implement algorithm benchmarks
@@ -16,3 +12,7 @@
 - improve the algorithm
     - avoid repeatable squads
 - implement a statistically optimal selection
+
+## Experimental Features
+- dynamic regeneration
+- UI for marking availability

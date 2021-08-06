@@ -13,7 +13,7 @@
 ### Running the scheduler script
 ### Interactive scheduer
 
-## The nitty-gritty of the problem
+## The nitty-gritty
 
 ### Objectives
 

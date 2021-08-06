@@ -1,0 +1,75 @@
+Week,Living room,Toilets,Bathroom,Showers,Hallways,Kitchen,Laundry room
+02-08-21,"Eva, Ab",Roos,Kees,Marko,Manu,"Jasper, Daan, Stephanie",Marjo
+09-08-21,"Kees, Roos",Eva,Ab,Manu,Marko,,
+16-08-21,"Marko, Manu",Ab,Eva,Roos,Kees,,
+23-08-21,"Jasper, Stephanie",Kees,Roos,Eva,Ab,,
+30-08-21,"Daan, Marjo",Marko,Manu,Ab,Eva,,
+06-09-21,"Bas, Tom",Manu,Marko,Kees,Roos,"Marjo, Eva, Ab",Jasper
+13-09-21,"Michelle, Diego",Jasper,Stephanie,Daan,Marjo,,
+20-09-21,"Eva, Ab",Stephanie,Jasper,Marjo,Daan,,
+27-09-21,"Kees, Roos",Daan,Marjo,Jasper,Stephanie,,
+04-10-21,"Marko, Manu",Marjo,Daan,Stephanie,Jasper,"Kees, Bas, Roos",Eva
+11-10-21,"Jasper, Stephanie",Bas,Tom,Michelle,Diego,,
+18-10-21,"Daan, Marjo",Tom,Bas,Diego,Michelle,,
+25-10-21,"Bas, Tom",Michelle,Diego,Marko,Manu,,
+01-11-21,"Michelle, Diego",Roos,Kees,Bas,Tom,"Marko, Manu, Jasper",Ab
+08-11-21,"Eva, Ab",Diego,Michelle,Tom,Bas,,
+15-11-21,"Kees, Roos",Eva,Ab,Manu,Marko,,
+22-11-21,"Marko, Manu",Ab,Eva,Roos,Kees,,
+29-11-21,"Jasper, Stephanie",Kees,Roos,Eva,Ab,,
+06-12-21,"Daan, Marjo",Marko,Manu,Ab,Eva,"Michelle, Diego, Tom",Roos
+13-12-21,"Bas, Tom",Manu,Marko,Kees,Roos,,
+20-12-21,"Michelle, Diego",Jasper,Stephanie,Daan,Marjo,,
+27-12-21,"Eva, Ab",Stephanie,Jasper,Marjo,Daan,,
+03-01-22,"Kees, Roos",Daan,Marjo,Jasper,Stephanie,"Bas, Eva, Ab",Marko
+10-01-22,"Marko, Manu",Marjo,Daan,Stephanie,Jasper,,
+17-01-22,"Jasper, Stephanie",Bas,Tom,Michelle,Diego,,
+24-01-22,"Daan, Marjo",Tom,Bas,Diego,Michelle,,
+31-01-22,"Bas, Tom",Michelle,Diego,Marko,Manu,,
+07-02-22,"Michelle, Diego",Roos,Kees,Bas,Tom,"Stephanie, Daan, Marjo",Manu
+14-02-22,"Eva, Ab",Diego,Michelle,Tom,Bas,,
+21-02-22,"Kees, Roos",Eva,Ab,Manu,Marko,,
+28-02-22,"Marko, Manu",Ab,Eva,Roos,Kees,,
+07-03-22,"Jasper, Stephanie",Kees,Roos,Eva,Ab,"Marko, Manu, Tom",Daan
+14-03-22,"Daan, Marjo",Marko,Manu,Ab,Eva,,
+21-03-22,"Bas, Tom",Manu,Marko,Kees,Roos,,
+28-03-22,"Michelle, Diego",Jasper,Stephanie,Daan,Marjo,,
+04-04-22,"Eva, Ab",Stephanie,Jasper,Marjo,Daan,"Kees, Michelle, Roos",Bas
+11-04-22,"Kees, Roos",Daan,Marjo,Jasper,Stephanie,,
+18-04-22,"Marko, Manu",Marjo,Daan,Stephanie,Jasper,,
+25-04-22,"Jasper, Stephanie",Bas,Tom,Michelle,Diego,,
+02-05-22,"Daan, Marjo",Tom,Bas,Diego,Michelle,"Jasper, Eva, Ab",Kees
+09-05-22,"Bas, Tom",Michelle,Diego,Marko,Manu,,
+16-05-22,"Michelle, Diego",Roos,Kees,Bas,Tom,,
+23-05-22,"Eva, Ab",Diego,Michelle,Tom,Bas,,
+30-05-22,"Kees, Roos",Eva,Ab,Manu,Marko,,
+06-06-22,"Marko, Manu",Ab,Eva,Roos,Kees,"Diego, Stephanie, Bas",Tom
+13-06-22,"Jasper, Stephanie",Kees,Roos,Eva,Ab,,
+20-06-22,"Daan, Marjo",Marko,Manu,Ab,Eva,,
+27-06-22,"Bas, Tom",Manu,Marko,Kees,Roos,,
+04-07-22,"Michelle, Diego",Jasper,Stephanie,Daan,Marjo,"Marko, Manu, Tom",Eva
+11-07-22,"Eva, Ab",Stephanie,Jasper,Marjo,Daan,,
+18-07-22,"Kees, Roos",Daan,Marjo,Jasper,Stephanie,,
+25-07-22,"Marko, Manu",Marjo,Daan,Stephanie,Jasper,,
+01-08-22,"Jasper, Stephanie",Bas,Tom,Michelle,Diego,"Daan, Marjo, Roos",Ab
+08-08-22,"Daan, Marjo",Tom,Bas,Diego,Michelle,,
+15-08-22,"Bas, Tom",Michelle,Diego,Marko,Manu,,
+22-08-22,"Michelle, Diego",Roos,Kees,Bas,Tom,,
+29-08-22,"Eva, Ab",Diego,Michelle,Tom,Bas,,
+05-09-22,"Kees, Roos",Eva,Ab,Manu,Marko,"Michelle, Diego, Jasper",Stephanie
+12-09-22,"Marko, Manu",Ab,Eva,Roos,Kees,,
+19-09-22,"Jasper, Stephanie",Kees,Roos,Eva,Ab,,
+26-09-22,"Daan, Marjo",Marko,Manu,Ab,Eva,,
+03-10-22,"Bas, Tom",Manu,Marko,Kees,Roos,"Stephanie, Eva, Ab",Michelle
+10-10-22,"Michelle, Diego",Jasper,Stephanie,Daan,Marjo,,
+17-10-22,"Eva, Ab",Stephanie,Jasper,Marjo,Daan,,
+24-10-22,"Kees, Roos",Daan,Marjo,Jasper,Stephanie,,
+31-10-22,"Marko, Manu",Marjo,Daan,Stephanie,Jasper,,
+07-11-22,"Jasper, Stephanie",Bas,Tom,Michelle,Diego,"Kees, Marko, Manu",Marjo
+14-11-22,"Daan, Marjo",Tom,Bas,Diego,Michelle,,
+21-11-22,"Bas, Tom",Michelle,Diego,Marko,Manu,,
+28-11-22,"Michelle, Diego",Roos,Kees,Bas,Tom,,
+05-12-22,"Eva, Ab",Diego,Michelle,Tom,Bas,"Daan, Marjo, Roos",Jasper
+12-12-22,"Kees, Roos",Eva,Ab,Manu,Marko,,
+19-12-22,"Marko, Manu",Ab,Eva,Roos,Kees,,
+26-12-22,"Jasper, Stephanie",Kees,Roos,Eva,Ab,,

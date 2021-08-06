@@ -1,4 +1,6 @@
-source/oud/
+src/oud/
+src/oud/task_in.csv
 .vscode/
 __pycache__/
+*.pyc
 .ipynb_checkpoints/
