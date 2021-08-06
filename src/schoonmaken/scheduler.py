@@ -1,6 +1,6 @@
 from collections import defaultdict, namedtuple
 from datetime import date, timedelta
-from random import choice
+from random import choice, shuffle
 
 from schoonmaken.common import Counters, Person, Task
 
@@ -9,9 +9,13 @@ def score(task, person):
     return counters.score(task, person)
 
 
-def choose_people(task: Task, people: set[Person]) -> set[Person]:
+def choose_people(task: Task,
+                  people: set[Person],
+                  random_spread=1) -> set[Person]:
     scores = [(score(task, person), person) for person in people]
     scores.sort(key=lambda pair: pair[0])
+    scores = scores[:task.numpeople + random_spread]
+    shuffle(scores)
     chosen = scores[:task.numpeople]
     return set([person for score, person in chosen])
 
