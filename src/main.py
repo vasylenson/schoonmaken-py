@@ -1,6 +1,7 @@
 from datetime import date
 
 from schoonmaken.serializer import build_table, csv, html
+from schoonmaken.config import STYLE
 from schoonmaken.common import Person, Task, weeks
 import schoonmaken.scheduler as schoonmaken
 
@@ -38,8 +39,8 @@ schedule = schoonmaken.fill_schedule(weeks, people, tasks)
 
 table = build_table(schedule, tasks)
 
-with open('task.html', 'w') as output:
-    output.write(html(table))
+with open('out/task.html', 'w') as output:
+    output.write(html(table) + STYLE)
 
-with open('task.csv', 'w') as output:
+with open('out/task.csv', 'w') as output:
     output.write(csv(table))
